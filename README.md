@@ -57,3 +57,31 @@ None,0/tcp,10913,"Microsoft Windows - Local Users Information : Disabled Account
 None,0/tcp,10915,"Microsoft Windows - Local Users Information : User Has Never Logged In"
 None,0/tcp,24786,"Nessus Windows Scan Not Performed with Admin Privileges"
 ```
+
+### count risks by Severity
+
+In case of exporting output to sigle .nessus file(in many hosts), to summarize risks by it's severity level:
+
+1. Save risk_factor.py output(CSV) as "nessus_result.csv".
+2. Following awk command line:
+```
+$ awk 'BEGIN{FS=",";OFS=","} /^Critical,/ {count[$4]++} END{for(i in count)print count[i], i}' nessus_result.csv > crit.csv
+$ awk 'BEGIN{FS=",";OFS=","} /^High,/ {count[$4]++} END{for(i in count)print count[i], i}' nessus_result.csv > high.csv
+$ awk 'BEGIN{FS=",";OFS=","} /^Medium,/ {count[$4]++} END{for(i in count)print count[i], i}' nessus_result.csv > medium.csv
+$ awk 'BEGIN{FS=",";OFS=","} /^Low,/ {count[$4]++} END{for(i in count)print count[i], i}' nessus_result.csv > low.csv
+```
+
+Output example(Medium):
+```
+$ cat medium.csv 
+8,"Microsoft Windows Remote Desktop Protocol Server Man-in-the-Middle Weakness"
+94,"SSL Certificate Cannot Be Trusted"
+3,"SMB Use Host SID to Enumerate Local Users Without Credentials"
+3,"Microsoft Windows SMB LsaQueryInformationPolicy Function SID Enumeration Without Credentials"
+48,"SSL Medium Strength Cipher Suites Supported"
+9,"Terminal Services Encryption Level is Medium or Low"
+11,"SSL Certificate Signed Using Weak Hashing Algorithm"
+5,"Microsoft Windows SMB NULL Session Authentication"
+132,"SSL Self-Signed Certificate"
+```
+
