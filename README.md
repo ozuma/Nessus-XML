@@ -60,7 +60,7 @@ None,0/tcp,24786,"Nessus Windows Scan Not Performed with Admin Privileges"
 
 ### count risks by Severity
 
-In case of exporting output to sigle .nessus file(in many hosts), to summarize risks by it's severity level:
+Here is an sample code. In case of exporting output XML to single `.nessus` file with many hosts, to summarize risks by it's severity level:
 
 1. Save risk_factor.py output(CSV) as "nessus_result.csv".
 2. Following awk command line:
