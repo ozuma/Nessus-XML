@@ -37,6 +37,6 @@ for item in tree.findall('Report/ReportHost/ReportItem'):
     risk_factor + ',' + \
     port + '/' + protocol + ',' + \
     pluginID + ',' + \
-    pluginName
+    '"' + pluginName + '"'
   )
 

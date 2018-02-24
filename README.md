@@ -6,9 +6,14 @@ This script handle Nessus XML "v2"(`<NessusClientData_v2>`). Nessus 6 and Nessus
 
 # Sample
 
-Use sample_xml/wint4_0.nessus.
+To get XML(.nessus) files, get `sample_xml` directory. Result of my various scans are located.
 
-## Risk_factor(Critical/High/Medium/Low/None),pluginID,pluginName,port/protocol
+## Risk all lists
+
+Print CSV format as below:
+```
+risk_factor(Critical/High/Medium/Low/None),port/protocol,pluginID,"pluginName"
+```
 
 Use node: 
 * `Report -> ReportHost -> ReportItem`
@@ -16,8 +21,6 @@ Use node:
 
 On Web console, you see "Info" field(blue bar). But in XML output, it's displayed as "None".
 ```
-risk_factor, port/protocol, pluginID, pluginName
-
 $ ./risk_factor.py sample_xml/wint4_0.nessus 
 Critical,139/tcp,34477,MS08-067: Microsoft Windows Server Service Crafted RPC Request Handling Remote Code Execution (958644) (ECLIPSEDWING) (uncredentialed check)
 None,139/tcp,106716,Microsoft Windows SMB2 Dialects Supported (remote check)
