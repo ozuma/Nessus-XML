@@ -1,6 +1,6 @@
 # Introduction
 
-How to parse Nessus XML file.
+How to parse Nessus XML file(foo_bar.nessus).
 
 This script handle Nessus XML "v2"(`<NessusClientData_v2>`). Nessus 6 and Nessus 7 use this format.
 
