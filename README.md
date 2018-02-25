@@ -8,9 +8,9 @@ This script handle Nessus XML "v2" format(`<NessusClientData_v2>`). Nessus 6 and
 
 To try this script, you can use some sample XML(.nessus) files in `/sample_xml` directory.
 
-## View CSV format
+## nessus2csv.py - View CSV format
 
-Print CSV format as below:
+`nessus2csv.py` prints CSV format as below:
 ```
 ipaddr,risk_factor(Critical/High/Medium/Low/None),port/protocol,pluginID,"pluginName"
 ```
