@@ -30,7 +30,6 @@ for host in tree.findall('Report/ReportHost'):
   ipaddr = host.find("HostProperties/tag/[@name='host-ip']").text
 
   for item in host.findall('ReportItem'):
-
     risk_factor = item.find('risk_factor').text
     pluginID = item.get('pluginID')
     pluginName = item.get('pluginName')
