@@ -53,10 +53,10 @@ To summarize risks by it's severity level (when one `.nessus` file with many hos
 1. Save nessus2csv.py output(CSV) as "nessus_result.csv".
 2. Following awk command line:
 ```
-$ awk 'BEGIN{FS=",";OFS=","} /^Critical,/ {count[$4]++} END{for(i in count)print count[i], i}' nessus_result.csv > crit.csv
-$ awk 'BEGIN{FS=",";OFS=","} /^High,/ {count[$4]++} END{for(i in count)print count[i], i}' nessus_result.csv > high.csv
-$ awk 'BEGIN{FS=",";OFS=","} /^Medium,/ {count[$4]++} END{for(i in count)print count[i], i}' nessus_result.csv > medium.csv
-$ awk 'BEGIN{FS=",";OFS=","} /^Low,/ {count[$4]++} END{for(i in count)print count[i], i}' nessus_result.csv > low.csv
+$ awk 'BEGIN{FS=",";OFS=","} /,Critical,/ {count[$5]++} END{for(i in count)print count[i], i}' nessus_result.csv > crit.csv
+$ awk 'BEGIN{FS=",";OFS=","} /,High,/ {count[$5]++} END{for(i in count)print count[i], i}' nessus_result.csv > high.csv
+$ awk 'BEGIN{FS=",";OFS=","} /,Medium,/ {count[$5]++} END{for(i in count)print count[i], i}' nessus_result.csv > medium.csv
+$ awk 'BEGIN{FS=",";OFS=","} /,Low,/ {count[$5]++} END{for(i in count)print count[i], i}' nessus_result.csv > low.csv
 ```
 
 Output example(Medium):
