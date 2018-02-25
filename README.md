@@ -2,11 +2,11 @@
 
 Here is some sample scripts to parse Nessus XML file(e.g. foo_bar.nessus).
 
-This script handle Nessus XML "v2"(`<NessusClientData_v2>`). Nessus 6 and Nessus 7 use this format.
+This script handle Nessus XML "v2" format(`<NessusClientData_v2>`). Nessus 6 and Nessus 7 use this format.
 
 # Sample
 
-I put some Sample XML(.nessus) files in `/sample_xml` directory.
+To try this script, you can use some sample XML(.nessus) files in `/sample_xml` directory.
 
 ## View CSV format
 
@@ -22,7 +22,7 @@ Use node:
 
 On Web console, you see "Info" field(blue bar). But in XML output, it's displayed as "None".
 ```
-$ ./risk_factor.py sample_xml/wint4_0.nessus 
+$ ./nessus2csv.py sample_xml/wint4_0.nessus 
 192.168.2.40,Critical,139/tcp,34477,"MS08-067: Microsoft Windows Server Service Crafted RPC Request Handling Remote Code Execution (958644) (ECLIPSEDWING) (uncredentialed check)"
 192.168.2.40,None,139/tcp,106716,"Microsoft Windows SMB2 Dialects Supported (remote check)"
 192.168.2.40,None,139/tcp,96982,"Server Message Block (SMB) Protocol Version 1 Enabled (uncredentialed check)"
@@ -50,7 +50,7 @@ $ ./risk_factor.py sample_xml/wint4_0.nessus
 
 Here is an sample code. In case of exporting output XML to single `.nessus` file with many hosts, to summarize risks by it's severity level:
 
-1. Save risk_factor.py output(CSV) as "nessus_result.csv".
+1. Save nessus2csv.py output(CSV) as "nessus_result.csv".
 2. Following awk command line:
 ```
 $ awk 'BEGIN{FS=",";OFS=","} /^Critical,/ {count[$4]++} END{for(i in count)print count[i], i}' nessus_result.csv > crit.csv
