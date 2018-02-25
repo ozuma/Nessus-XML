@@ -9,7 +9,7 @@ tree = ET.parse(argv[1])
 # 
 # <NessusClientData_v2>
 # <Report name="Win NT 4.0" xmlns:cm="http://www.nessus.org/cm">
-# <ReportHost name="192.168.2.40">
+# <ReportHost name="myscan">
 # ......
 # <ReportItem port="139" svc_name="smb" protocol="tcp" severity="4" pluginID="34477" pluginName="MS08-067: Microsoft Windows Server Service Crafted RPC Request Handling Remote Code Execution (958644) (ECLIPSEDWING) (uncredentialed check)" pluginFamily="Windows">
 # ......
@@ -26,17 +26,25 @@ tree = ET.parse(argv[1])
 # </Report>
 # </NessusClientData_v2>
 
-for item in tree.findall('Report/ReportHost/ReportItem'):
-  risk_factor = item.find('risk_factor').text
-  pluginID = item.get('pluginID')
-  pluginName = item.get('pluginName')
-  port = item.get('port')
-  protocol = item.get('protocol')
+for host in tree.findall('Report/ReportHost'):
+  ipaddr = ""
 
-  print(
-    risk_factor + ',' + \
-    port + '/' + protocol + ',' + \
-    pluginID + ',' + \
-    '"' + pluginName + '"'
-  )
+  for hosttag in host.findall("HostProperties/tag/[@name='host-ip']"):
+     ipaddr = hosttag.text
+
+  for item in host.findall('ReportItem'):
+
+    risk_factor = item.find('risk_factor').text
+    pluginID = item.get('pluginID')
+    pluginName = item.get('pluginName')
+    port = item.get('port')
+    protocol = item.get('protocol')
+  
+    print(
+      ipaddr + ',' + \
+      risk_factor + ',' + \
+      port + '/' + protocol + ',' + \
+      pluginID + ',' + \
+      '"' + pluginName + '"'
+    )
 
