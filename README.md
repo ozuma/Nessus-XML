@@ -48,7 +48,7 @@ $ ./nessus2csv.py sample_xml/wint4_0.nessus
 
 ### count risks by Severity
 
-Here is an sample code. In case of exporting output XML to single `.nessus` file with many hosts, to summarize risks by it's severity level:
+To summarize risks by it's severity level (when one `.nessus` file with many hosts):
 
 1. Save nessus2csv.py output(CSV) as "nessus_result.csv".
 2. Following awk command line:
