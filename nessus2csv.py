@@ -27,10 +27,7 @@ tree = ET.parse(argv[1])
 # </NessusClientData_v2>
 
 for host in tree.findall('Report/ReportHost'):
-  ipaddr = ""
-
-  for hosttag in host.findall("HostProperties/tag/[@name='host-ip']"):
-     ipaddr = hosttag.text
+  ipaddr = host.find("HostProperties/tag/[@name='host-ip']").text
 
   for item in host.findall('ReportItem'):
 
