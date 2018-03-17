@@ -1,12 +1,12 @@
 # Introduction
 
-Here is some sample scripts to parse Nessus XML file(e.g. foo_bar.nessus).
+Some sample scripts to parse Nessus XML file(.nessus) to CSV.
 
-This script handle Nessus XML "v2" format(`<NessusClientData_v2>`). Nessus 6 and Nessus 7 use this format.
+This script handles "v2" format(`<NessusClientData_v2>`). Nessus 6 and Nessus 7 use this format.
 
-# Sample
+# Try
 
-To try this script, you can use some sample XML(.nessus) files in `/sample_xml` directory.
+You can use sample XML(.nessus) files in `/sample_xml` directory.
 
 ## nessus2csv.py - View CSV format
 
@@ -15,12 +15,6 @@ To try this script, you can use some sample XML(.nessus) files in `/sample_xml` 
 ipaddr,risk_factor(Critical/High/Medium/Low/None),port/protocol,pluginID,"pluginName"
 ```
 
-Use node: 
-* `Report -> ReportHost -> HostProperties` (Get IP address of targets)
-* `Report -> ReportHost -> ReportItem`
-* `Report -> ReportHost -> ReportItem -> risk_factor`
-
-On Web console, you see "Info" field(blue bar). But in XML output, it's displayed as "None".
 ```
 $ ./nessus2csv.py sample_xml/wint4_0.nessus 
 192.168.2.40,Critical,139/tcp,34477,"MS08-067: Microsoft Windows Server Service Crafted RPC Request Handling Remote Code Execution (958644) (ECLIPSEDWING) (uncredentialed check)"
@@ -45,6 +39,7 @@ $ ./nessus2csv.py sample_xml/wint4_0.nessus
 192.168.2.40,Critical,0/tcp,19699,"Microsoft Windows NT 4.0 Unsupported Installation Detection"
 ....
 ```
+On Web console, you see "Info" field(blue bar). But in XML output, it's displayed as "None".
 
 ### count risks by Severity
 
